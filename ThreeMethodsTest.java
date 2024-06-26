@@ -20,10 +20,9 @@ public class ThreeMethodsTest {
     public void equalsTest() {
         Human human1 = new Human("Natasha", 23, Human.Gender.FEMALE);
         Human human2 = new Human("Natasha", 23, Human.Gender.FEMALE);
-        Assert.assertEquals(human1.getName(), human2.getName());
-        Assert.assertEquals(human1.getAge(), human2.getAge());
-        Assert.assertEquals(human1.getGender(), Human.Gender.FEMALE);
-        Assert.assertEquals(human1.getId(), human2.getId());
+        Assert.assertSame(human1,human1);
+        Assert.assertFalse(human1 == human2);
+
     }
 
     @Test
@@ -32,7 +31,7 @@ public class ThreeMethodsTest {
         Human human2 = new Human("Natasha", 23, Human.Gender.FEMALE);
         int privateHashCodeHuman1 = human1.hashCode();
         int privateHashCodeHuman2 = human2.hashCode();
-        Assert.assertEquals(privateHashCodeHuman1, privateHashCodeHuman1);
+        Assert.assertFalse(privateHashCodeHuman1 == privateHashCodeHuman2);
     }
 }
 
