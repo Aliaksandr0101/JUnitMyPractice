@@ -8,11 +8,10 @@ public class Human {
         MALE, FEMALE
     }
 
-
     private final String name;
     private final int age;
     private final int id;
-    private int counterOfHumans = 0;
+    private static int counterOfHumans = 0;
 
     private final Gender gender;
 
@@ -60,10 +59,6 @@ public class Human {
                 gender == human.gender;
     }
 
-   /* @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }*/
 
     @Override
     public int hashCode() {
@@ -71,49 +66,55 @@ public class Human {
     }
 }
 
- class HumanManager{
-     private Human human;
-     private  List<Human> people = new ArrayList<>();
+class HumanManager {
+    private Human human;
+    private List<Human> people = new ArrayList<>();
 
-     public HumanManager() {
-     }
+    public HumanManager() {
+    }
 
-     public HumanManager(Human human) {
-         this.human = human;
-     }
-        public int getTotalNumberOfPeople () {
+    public HumanManager(Human human) {
+
+        this.human = human;
+    }
+
+    public int getTotalNumberOfPeople() {
         return people.size();
     }
 
-        public void addHuman (Human human){
+    public void addHuman(Human human) {
         people.add(human);
     }
 
-        public int getNumberByGender (Human.Gender gender){
+    public int getNumberByGender(Human.Gender gender) {
         return (int) people.stream().filter(human -> human.getGender() == gender).count();
     }
-        public int getTotalAge () {
+
+    public int getTotalAge() {
         return people.stream().mapToInt(Human::getAge).sum();
     }
-        public int getAgeByGender (Human.Gender gender){
+
+    public int getAgeByGender(Human.Gender gender) {
         return people.stream().filter(human -> human.getGender() == gender).mapToInt(Human::getAge).sum();
     }
 
-        public double getTotalAverageAge () {
+    public double getTotalAverageAge() {
         return people.isEmpty() ? 0 : (double) getTotalAge() / people.size();
     }
 
-        public double getAverageByGender (Human.Gender gender ){
+    public double getAverageByGender(Human.Gender gender) {
         int count = getNumberByGender(gender);
         return count == 0 ? 0 : (double) getAgeByGender(gender) / count;
     }
-        public List<Human> getUsersByGenderList (Human.Gender gender){
+
+    public List<Human> getUsersByGenderList(Human.Gender gender) {
         return people.stream().filter(people -> people.getGender() == gender).collect(Collectors.toList());
     }
-    }
+}
 
 
 class Check {
+
     public static void main(String[] args) {
         Human human1 = new Human("Sasha", 32, Human.Gender.MALE);
         Human human2 = new Human("Natasha", 23, Human.Gender.FEMALE);
@@ -126,11 +127,21 @@ class Check {
         humanManager.addHuman(human3);
         humanManager.addHuman(human4);
 
-        System.out.println(humanManager.getTotalNumberOfPeople());
 
-
+        System.out.println("Number of human = " + humanManager.getTotalNumberOfPeople());
+        System.out.println("Number of mans = " + humanManager.getNumberByGender(Human.Gender.MALE));
+        System.out.println("Number of woman = " + humanManager.getNumberByGender(Human.Gender.FEMALE));
+        System.out.println("Sum ages all people = " + humanManager.getTotalAge());
+        System.out.println("Sum ages all mans = " + humanManager.getAgeByGender(Human.Gender.MALE));
+        System.out.println("Sum ages all woman = " + humanManager.getAgeByGender(Human.Gender.FEMALE));
+        System.out.println("Average age all people = " + humanManager.getTotalAverageAge());
+        System.out.println("Average age all man = " + humanManager.getAverageByGender(Human.Gender.MALE));
+        System.out.println("Average age all woman = " + humanManager.getAverageByGender(Human.Gender.FEMALE));
+        System.out.println("Output on display all mans - " + humanManager.getUsersByGenderList(Human.Gender.MALE));
+        System.out.println("Output on display all woman - " + humanManager.getUsersByGenderList(Human.Gender.FEMALE));
 
 
     }
+
 
 }
