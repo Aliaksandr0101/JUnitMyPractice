@@ -68,7 +68,7 @@ public class Human {
 
 class HumanManager {
     private Human human;
-    private List<Human> people = new ArrayList<>();
+    private  List<Human> people = new ArrayList<>();
 
     public HumanManager() {
     }
@@ -91,7 +91,7 @@ class HumanManager {
     }
 
     public int getTotalAge() {
-        return people.stream().mapToInt(Human::getAge).sum();
+        return people.stream().mapToInt(element->element.getAge()).sum();
     }
 
     public int getAgeByGender(Human.Gender gender) {
@@ -128,6 +128,7 @@ class Check {
         humanManager.addHuman(human4);
 
 
+
         System.out.println("Number of human = " + humanManager.getTotalNumberOfPeople());
         System.out.println("Number of mans = " + humanManager.getNumberByGender(Human.Gender.MALE));
         System.out.println("Number of woman = " + humanManager.getNumberByGender(Human.Gender.FEMALE));
@@ -139,7 +140,6 @@ class Check {
         System.out.println("Average age all woman = " + humanManager.getAverageByGender(Human.Gender.FEMALE));
         System.out.println("Output on display all mans - " + humanManager.getUsersByGenderList(Human.Gender.MALE));
         System.out.println("Output on display all woman - " + humanManager.getUsersByGenderList(Human.Gender.FEMALE));
-
 
     }
 
