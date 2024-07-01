@@ -5,7 +5,8 @@ public class MethodsTestForStream {
     }
 
     public static void main(String[] args) {
-        enterOnDisplay((String anyString) -> {return anyString.length() > 3;});
+        enterOnDisplay((String anyString) -> {return anyString.length() < 3;});
+
     }
 
 }

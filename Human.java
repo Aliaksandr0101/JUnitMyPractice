@@ -87,11 +87,11 @@ class HumanManager {
     }
 
     public int getNumberByGender(Human.Gender gender) {
-        return (int) people.stream().filter(human -> human.getGender() == gender).count();
+        return (int) people.stream().filter(element -> element.getGender() == gender).count();
     }
 
     public int getTotalAge() {
-        return people.stream().mapToInt(element->element.getAge()).sum();
+        return people.stream().mapToInt((Human element)->element.getAge()).sum();
     }
 
     public int getAgeByGender(Human.Gender gender) {
