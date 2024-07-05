@@ -10,7 +10,14 @@ public class MethodsTestForStream {
         Checker newChecker =  newString -> newString.length() < 1;
         boolean result = newChecker.checkOnNumberOfLetter("Hello");
         System.out.println(result);
-    }
+
+       new Thread(new Runnable() {
+        @Override
+        public void run() {
+            System.out.println("Я только что реализовал функциональный интерфейс Runnable.");
+        }
+    }).start();
+}
 
 }
 interface Checker{
