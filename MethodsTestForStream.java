@@ -10,6 +10,7 @@ public class MethodsTestForStream {
         Checker newChecker =  newString -> newString.length() < 1;
         boolean result = newChecker.checkOnNumberOfLetter("Hello");
         System.out.println(result);
+        System.out.println(result);
 
        new Thread(new Runnable() {
         @Override
